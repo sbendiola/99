@@ -20,17 +20,17 @@ let assertAreEqual(text, a, b) : unit =
         ()
 
 let rec nth i xs =
-	match (i, xs) with
-	| (0, h :: t) -> h
-	| (n, h :: t) -> nth (n - 1) t
-	| _ -> failwith("didn't converge")
+    match (i, xs) with
+    | (0, h :: t) -> h
+    | (n, h :: t) -> nth (n - 1) t
+    | _ -> failwith("didn't converge")
 
 let rec length xs =
-  	let rec countLength s xs = 
-		match xs with
-		| [] -> s
-		| h :: t -> countLength (s + 1) t
-	countLength 0 xs		   
+    let rec countLength s xs = 
+        match xs with
+        | [] -> s
+        | h :: t -> countLength (s + 1) t
+    countLength 0 xs           
         
 let main =
     assertAreEqual("last", 3, last [1; 2; 3])
@@ -40,3 +40,4 @@ let main =
     assertAreEqual("nth", 1, (nth 2 [3; 2; 1]))
     assertAreEqual("length", 3, (length [3; 2; 1]))    
     
+main;;
