@@ -8,10 +8,10 @@ let rec last xs =
     | _ -> failwith "items required"
 
 let rec penultimate xs = 
-        match xs with 
-        | h :: t :: [] -> h
-        | h :: t -> penultimate t
-        | _ -> failwith "items required"
+    match xs with 
+    | h :: t :: [] -> h 
+    | h :: t -> penultimate t
+    | _ -> failwith "items required"
 
 let assertAreEqual(text, a, b) : unit = 
     if not (a = b) then
