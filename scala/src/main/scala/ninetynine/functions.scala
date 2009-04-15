@@ -2,11 +2,11 @@ package ninetynine
 
 object functions {
   def last(list: List[Any]) : Any = 
-  list match {
-    case x :: Nil => x
-    case x :: xs => last(xs)
-    case _ => error("items required")
-  }
+    list match {
+      case x :: Nil => x
+      case x :: xs => last(xs)
+      case _ => error("items required")
+    }
 
   def penultimate(list: List[Any]) : Any = {
     list match {
@@ -29,4 +29,9 @@ object functions {
     }   
     reverse(Nil, list)
   }
+  
+  def isPalindrome(list: List[Any]) : Boolean = {
+    list.zip(list.reverse).exists(both => both._1 != both._2) == false
+  }
+
 }

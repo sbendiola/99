@@ -9,6 +9,7 @@ object MySpecRunner extends ConsoleRunner(MySpec)
 
 object MySpec extends Specification {
   val list = List(1, 2, 3, 4, 5)
+    
   "last should return the very last element" in {
     last(list) mustEq 5
   }
@@ -36,4 +37,7 @@ object MySpec extends Specification {
     }
   }
 
+  "palindrome is the same reversed" in {
+    isPalindrome(List(1, 2, 3, 2, 1)) mustEq true
+  }
 }
