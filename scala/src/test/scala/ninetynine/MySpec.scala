@@ -38,6 +38,6 @@ object MySpec extends Specification {
   }
 
   "palindrome is the same reversed" in {
-    isPalindrome(List(1, 2, 3, 2, 1)) mustEq true
+    isPalindrome(List(1, 2, 3, 2, 1)) mustEq false
   }
 }
