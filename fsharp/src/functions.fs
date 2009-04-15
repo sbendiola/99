@@ -19,7 +19,7 @@ module Functions =
       match (i, xs) with
       | (0, h :: t) -> h
       | (n, h :: t) -> nth (n - 1) t
-      | _ -> failwith("didn't converge")
+      | _ -> failwith "didn't converge"
 
   let rec length xs =
       let rec countLength s xs = 
