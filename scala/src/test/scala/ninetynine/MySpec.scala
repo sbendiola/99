@@ -38,11 +38,16 @@ object MySpec extends Specification {
   }
 
   "palindrome is the same reversed" in {
-    isPalindrome(List(1, 2, 3, 2, 1)) mustEq false
+    isPalindrome(List(1, 2, 3, 2, 1)) mustEq true
   }
 
   "flatten should return a list of the simple elements" in  {    
-    flatten(List(List(1, 2, 3), 4, List(5, 6, 7)) must
+    flatten(List(List(1, 2, 3), 4, List(5, 6, 7))) must
       haveSameElementsAs(List[Any](1, 2, 3, 4, 5, 6, 7))
   }
+
+  "compress removes consecuitive elements" in {
+    compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) must
+      haveSameElementsAs(List('a, 'b, 'c, 'a, 'd, 'e,))
+  }            
 }
