@@ -33,5 +33,21 @@ object functions {
   def isPalindrome(list: List[Any]) : Boolean = {
     list.zip(list.reverse).exists(both => both._1 != both._2) == false
   }
+  
+  def flatten[T](items: List[T]) : List[T] = {
+    def flatMapOuter[T](acc:List[T], all: List[T]) : List[T] = {
+      def flatMap[T](x: Any) : List[T] = {
+        x match {
+          case xs: List[T] => xs
+          case _ => List(x.asInstanceOf[T])
+        }
+      }
+      all match {
+        case h :: t => flatMapOuter(flatMap(h) ::: acc, t)
+        case _ => acc
+      }
+    }
+    flatMapOuter(Nil, items)
+  }
 
 }
