@@ -28,3 +28,19 @@ module Functions =
           | h :: t -> countLength (s + 1) t
       countLength 0 xs           
         
+  let reverse items = 
+      let rec reverseWith acc xs = 
+          match (acc, xs) with
+          | (_, []) -> acc
+          | (_, h :: t) -> reverseWith (h :: acc) t
+      reverseWith [] items
+
+  let palindrome(items: List<int>) : bool = 
+      let rec p2(f: List<int>, s: List<int>) : bool = 
+          match (f, s) with
+          | ([], []) -> true
+          | ([], _) -> false
+          | (_, []) -> false
+          | (x :: xs, y :: ys) when not x = y -> false         
+          | (x :: xs, y :: ys) -> p2(xs, ys)     
+      p2(items, reverse items)

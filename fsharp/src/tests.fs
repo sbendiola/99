@@ -18,6 +18,9 @@ module Tests =
     assertAreEqual("nth", 2, (nth 1 [3; 2; 1]))
     assertAreEqual("nth", 1, (nth 2 [3; 2; 1]))
     assertAreEqual("length", 3, (length [3; 2; 1]))    
+    assertAreEqual("reverse", [1; 2; 3; 4;], (reverse [4; 3; 2; 1;))
+    assertAreEqual("palindrome", true, (palindrome [1; 2; 3; 4; 3; 2; 1]))
+    assertAreEqual("palindrome2", false, (palindrome [1; 2; 3; 4; 3; 2))
     ()
 
   main();;

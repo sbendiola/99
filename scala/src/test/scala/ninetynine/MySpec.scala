@@ -33,7 +33,7 @@ object MySpec extends Specification {
     }
 
     "be in correct orders" in {
-      reverse(list) must haveSameElementsAs(List(5, 4, 3, 2, 1))
+      reverse(list) must containInOrder(List(5, 4, 3, 2, 1))
     }
   }
 
