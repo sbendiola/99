@@ -50,13 +50,13 @@ object functions {
     flatMapOuter(Nil, items)
   }
 
-  def compress[T](items: List[T]) : List[T] = 
-    items.foldLeft(List[T]()) {(xs, item) =>
-      (xs, item) match {
-        case (h :: t, i) if (i == h) => {
-          xs
-        }
-        case _ => item :: xs
-      }
-    }.reverse
+  def compress[T](items: List[T]) : List[T] = {
+    def compress2(acc: List[T], xs: List[T]) : List[T] = (acc, xs) match {
+      case (h :: t, h2 :: t2) if (h == h2) => compress2(acc, t2)
+      case (_, Nil) => acc.reverse
+      case (_, h2 :: t2) => compress2(h2 :: acc, t2)
+      
+    }
+    compress2(Nil, items)
+  }
 }
