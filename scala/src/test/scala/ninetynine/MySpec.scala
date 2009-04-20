@@ -40,4 +40,9 @@ object MySpec extends Specification {
   "palindrome is the same reversed" in {
     isPalindrome(List(1, 2, 3, 2, 1)) mustEq false
   }
+
+  "flatten should return a list of the simple elements" in  {    
+    flatten(List(List(1, 2, 3), 4, List(5, 6, 7)) must
+      haveSameElementsAs(List[Any](1, 2, 3, 4, 5, 6, 7))
+  }
 }
