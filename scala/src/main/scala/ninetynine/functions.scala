@@ -61,14 +61,14 @@ object functions {
 
   def pack[T](items: List[T]) : List[List[T]] = {
     def packrec(acc: List[List[T]], xs: List[T]) : List[List[T]] = xs match {
-	  case h :: t => {
-	    val (packed: List[T],rest) = xs.span(_ == h)
-		rest match {
-	      case Nil => List(packed)
-	      case _ => packrec(packed :: acc, rest) 
-	    }
-      } 	
-	  case Nil => List(List())	
+      case h :: t => {
+        val (packed: List[T],rest) = xs.span(_ == h)
+        rest match {
+          case Nil => List(packed)
+          case _ => packrec(packed :: acc, rest) 
+        }
+      }     
+      case Nil => List(List())  
     }
     packrec(Nil, items)
   }
