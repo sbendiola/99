@@ -43,11 +43,31 @@ object MySpec extends Specification {
 
   "flatten should return a list of the simple elements" in  {    
     flatten(List(List(1, 2, 3), 4, List(5, 6, 7))) must
-      haveSameElementsAs(List[Any](1, 2, 3, 4, 5, 6, 7))
+      containInOrder(List[Any](1, 2, 3, 4, 5, 6, 7))
   }
 
   "compress removes consecuitive elements" in {
     compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) must
-      haveSameElementsAs(List('a, 'b, 'c, 'a, 'd, 'e,))
+      containInOrder(List('a, 'b, 'c, 'a, 'd, 'e,))
   }            
+
+  "pack should place consecutive elements in sublists" {
+	//val result = pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+    val result = List(1, 2, 3)
+    reverse(list).size mustEq 5
+	pack(result).size mustEq 6	
+  }	
+//     pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+  //     containInOrder( List(
+	/*						List('a, 'a, 'a, 'a), 
+								List('b), 
+								List('c, 'c), 
+								List('a, 'a), 
+								List('d), 
+								List('e, 'e, 'e, 'e)
+								)
+								)*/
+   
 }
+
+

@@ -14,6 +14,11 @@
       <name>Scala-Tools Maven2 Repository</name>
       <url>http://scala-tools.org/repo-releases</url>
     </repository>
+    <repository>
+      <id>testing.scala-tools.org</id>
+      <name>Scala-Tools Maven2 Repository</name>
+      <url>http://scala-tools.org/repo-snapshots</url>
+    </repository>
   </repositories>
 
   <pluginRepositories>
@@ -37,9 +42,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.specs</groupId>
+      <groupId>org.scala-tools.testing</groupId>
       <artifactId>specs</artifactId>
-      <version>1.4.3</version>
+      <version>1.4.5-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
