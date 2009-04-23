@@ -43,8 +43,8 @@ object functions {
         }
       }
       all match {
-        case h :: t => flatMapOuter(flatMap(h) ::: acc, t)
-        case _ => acc
+        case h :: t => flatMapOuter(flatMap(h).reverse ::: acc, t)
+        case _ => acc.reverse
       }
     }
     flatMapOuter(Nil, items)
@@ -64,7 +64,7 @@ object functions {
       case h :: t => {
         val (packed: List[T],rest) = xs.span(_ == h)
         rest match {
-          case Nil => List(packed)
+          case Nil => (packed :: acc).reverse
           case _ => packrec(packed :: acc, rest) 
         }
       }     
