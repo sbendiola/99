@@ -1,47 +1,29 @@
 package ninetynine
 
-import org.scalacheck.Gen
-import org.scalatest.junit.JUnitSuite
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{PropSpec, ShouldMatchers}
 
-class MySpec extends PropSpec with ShouldMatchers with GeneratorDrivenPropertyChecks  {
 
+object MySpec extends PropSpec with ShouldMatchers with GeneratorDrivenPropertyChecks {
+  val list = List(1, 2, 3, 4, 5)
 
   property("last element") {
     forAll {
       (xs: List[Int]) =>
         whenever(xs.nonEmpty) {
-          val expected = xs.reverse.head
-          functions.last(xs) should be (expected)
+          xs.reverse.take(1) should be (functions.last(xs))
         }
     }
   }
 
-  property("penultimate") {
-    forAll {
-      (xs: List[Int]) =>
-        whenever(xs.size > 1) {
-          val expected = xs.reverse.drop(1).head
-          functions.penultimate(xs) should be (expected)
-        }
-    }
-  }
-  val withElementIndex: Gen[(List[Int], Int)] = for {
-    list <- Gen.listOfN(10, Gen.chooseNum(0, 100))
-    index <- Gen.choose(0, list.size - 1)
-  } yield (list, index)
-  property("nth element in the list") {
-    forAll {
-      (values: (List[Int], Int)) =>
-        val (list, n) = values
-
-        whenever(n >= 0 && list.length > n) {
-          functions.nth(n, list) should be (list(n))
-        }
-    }
-  }
-
+//  "last" should "return the very last element" in {
+//    last(list) mustEq 5
+//  }
+//
+//  "penultimate should return 2nd to last element" in {
+//    penultimate(list) mustEq 4
+//  }
+//
 //  "nth element in the list" should {
 //    "start at index 0" in {
 //      nth(0, list) mustEq 1

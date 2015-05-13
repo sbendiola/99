@@ -10,7 +10,7 @@ object functions {
 
   def penultimate(list: List[Any]) : Any = {
     list match {
-      case List(f, s, t) => s
+      case f :: s :: Nil  => f
       case h :: t => penultimate(t)
       case _ => error("elements required")
     }
